@@ -4,7 +4,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from .models import User, Country, State, City
+from .models import User, Country, State, City, Customer
 
 
 class UserCreationForm(forms.ModelForm):
@@ -79,6 +79,12 @@ class UserAdmin(BaseUserAdmin):
     filter_horizontal = ()
 
 
+class CustomerAdmin(admin.ModelAdmin):
+    class Meta:
+        model = Customer
+
+
+admin.site.register(Customer, CustomerAdmin)
 # Now register the new UserAdmin...
 admin.site.register(User, UserAdmin)
 admin.site.register(Country)

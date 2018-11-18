@@ -113,3 +113,24 @@ def category_list(request):
     return JsonResponse(context_data)
 
 
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def create_cart(request):
+    context_data = dict()
+    # Work to do
+    context_data[constants.RESPONSE_RESULT] = []
+    context_data[constants.RESPONSE_ERROR] = False
+    context_data[constants.RESPONSE_MESSAGE] = 'SuccessFully'
+    return JsonResponse(context_data)
+
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def get_appointment_list(request):
+    context_data = dict()
+    # Work to do
+    context_data[constants.RESPONSE_RESULT] = []
+    context_data[constants.RESPONSE_ERROR] = False
+    context_data[constants.RESPONSE_MESSAGE] = 'SuccessFully'
+    return JsonResponse(context_data)
+

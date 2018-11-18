@@ -109,15 +109,18 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 class Customer(models.Model):
     GENDER_TYPE = (
-        ('M', 'Male'),
-        ('F', 'Female')
+        (0, 'N/A'),
+        (1, 'Male'),
+        (2, 'Female')
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=120)
     last_name = models.CharField(max_length=120)
     date_of_birth = models.DateField(null=True, blank=True)
     mobile_no = models.CharField(max_length=10, null=True, blank=True)
-    gender = models.IntegerField(choices=GENDER_TYPE)
+    gender = models.IntegerField(choices=GENDER_TYPE, default=0)
+    is_active = models.BooleanField(default=False)
+    verify_code = models.TextField(blank=True, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
@@ -152,8 +155,6 @@ class Vendor(models.Model):
     return_consent_receive = models.BooleanField(default=False)
     notes = models.TextField(blank=True, null=True)
     image_name = models.TextField(blank=True, null=True)
-    start_time = models.TimeField(null=True)
-    end_time = models.TimeField(null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
