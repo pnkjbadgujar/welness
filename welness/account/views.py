@@ -176,10 +176,10 @@ def get_otp(request):
     if not error:
         try:
             otp = random.randint(111111, 999999)
-            # send_sms(
-            #     mobile=mobile,
-            #     message='Your ClickEazy.com OTP is: %s. \n Note Please DO NOT SHARE this OTP with anyone.' % str(otp)
-            # )
+            send_sms(
+                mobile=mobile,
+                message='Your ClickEazy.com OTP is: %s. \n Note Please DO NOT SHARE this OTP with anyone.' % str(otp)
+            )
             context_data[constants.RESPONSE_RESULT] = otp
         except Exception as e:
             error = True
